@@ -11,20 +11,20 @@ To build the container (named `aarch64-grub`) and a known-good image simply run 
 
 To build the container, run
 ```
-docker build . -t aarch64-grub
+docker build . -t grub-aarch64
 ```
-where `aarch64-grub` is an arbitrary container name.
+where `grub-aarch64` is an arbitrary container name.
 
 To run arbitrary grub commands run
 ```sh
-docker run [docker options...] aarch64-grub <command> [command options...]
+docker run [docker options...] grub-aarch64 <command> [command options...]
 ```
 Note that you have to prefix the standard `grub` commands with `aarch64-`.
 For example, to generate a fully self-contained image in the current directory, run
 ```sh
 docker run --rm                     \
     -v "${PWD}/":/output            \
-    aarch64-grub                    \
+    grub-aarch64                    \
     aarch64-grub-mkimage            \
         -O arm64-efi                \
         -o /output/bootaa64.efi     \

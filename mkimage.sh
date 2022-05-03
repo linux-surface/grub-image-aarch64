@@ -2,12 +2,12 @@
 set -e
 
 echo "-- BUILDING CONTAINER ----------------------------------------------------------"
-docker build . -t aarch64-grub
+docker build . -t grub-aarch64
 echo ""
 echo "-- GENERATING IMAGE ------------------------------------------------------------"
 docker run --rm                     \
     -v "${PWD}/":/output            \
-    aarch64-grub                    \
+    grub-aarch64                    \
     aarch64-grub-mkimage            \
         -O arm64-efi                \
         -o /output/bootaa64.efi     \
