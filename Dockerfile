@@ -41,7 +41,7 @@ FROM fedora:latest as env
 
 RUN dnf update -y                       \
     && dnf install -y                   \
-        gettext file mtools
+        gettext file mtools device-mapper-libs
 
 COPY --from=build install/ /
 
