@@ -63,6 +63,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Generate sbat.csv
+        run: |
+          TAG="${{github.ref_name}}"
+          PKGVER="${TAG#*-}"
+          sed -e "s/%PKGVER%/${PKGVER}/" < "sbat.csv.in" > "sbat.csv"
+
       - name: Build GRUB AArch64 Image
         run: |
           docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.ref_name }}
@@ -70,6 +76,7 @@ jobs:
               ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.ref_name }}  \
               aarch64-grub-mkimage                                              \
                   -O arm64-efi                                                  \
+                  --sbat /output/sbat.csv                                       \
                   -o /output/bootaa64.efi                                       \
                   --prefix=                                                     \
                   $(cat modules.txt)
