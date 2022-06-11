@@ -10,6 +10,7 @@ RUN dnf update -y                       \
         make                            \
         rpmdevtools                     \
         gcc-aarch64-linux-gnu           \
+        python                          \
         "dnf-command(builddep)"         \
     && dnf builddep -y grub2
 
