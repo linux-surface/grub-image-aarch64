@@ -1,5 +1,5 @@
 ARG repo="https://github.com/linux-surface/grub.git"
-ARG ref="grub-2.06"
+ARG ref="fedora-37"
 
 
 # build stage
