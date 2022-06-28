@@ -26,6 +26,7 @@ RUN cd grub                             \
         HOST_CPPFLAGS="-I$(pwd)"        \
         TARGET_CPPFLAGS="-I$(pwd)"      \
         --with-platform="efi"           \
+        --with-utils="host"             \
         --program-prefix="aarch64-"     \
         --disable-werror                \
         --disable-rpm-sort              \
