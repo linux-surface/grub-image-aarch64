@@ -74,4 +74,5 @@ all_video
 efi_gop
 video
 video_fb
+probe
 
